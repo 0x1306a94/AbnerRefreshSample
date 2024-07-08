@@ -2,6 +2,7 @@ import { ListView, RefreshController, RefreshDataSource, RefreshLayout, RefreshP
 
 import { CommonEmptyView } from '../empty/CommonEmptyView';
 import { CommonConstant } from '../../common/CommonConstant';
+import { font } from '@kit.ArkUI';
 
 
 class HeaderData {
@@ -55,6 +56,9 @@ export struct HomeRootView {
     private subViewModels: HomeActivityListViewModel[] = []
 
     aboutToAppear(): void {
+
+        // font.registerFont({familyName: 'FiraCode-Medium', familySrc: '/font/FiraCode-Medium.ttf'})
+
         setTimeout(() => {
             let headerData = new HeaderData();
             this.subViewModels = headerData.category.map(_ => new HomeActivityListViewModel());
@@ -98,7 +102,8 @@ export struct HomeRootView {
     @Builder
     BannerView() {
         Column() {
-            Text('banner')
+            Text('banner == !=')
+                .fontFamily('FiraCode-Medium')
                 .fontColor(Color.White)
                 .textAlign(TextAlign.Center)
         }

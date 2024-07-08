@@ -1,23 +1,30 @@
-import { TabRootView } from '../components/tab/TabRootView';
 import { CommonConstant } from '../common/CommonConstant';
+import { router } from '@kit.ArkUI';
 
 
 @Entry
 @Component
 struct Index {
-  @Provide('NavPathStack') pageStack: NavPathStack = new NavPathStack()
 
   build() {
-    Navigation(this.pageStack) {
-      TabRootView()
+    Column({space: 10}) {
+      Button('多级tab')
+        .onClick((e) => {
+          router.pushUrl({ url: 'pages/Multitab' });
+        });
+
+      Button('安全区域')
+        .onClick((e) => {
+          router.pushUrl({ url: 'pages/SafeArea' });
+        });
+
+      Button('个人主页')
+        .onClick((e) => {
+          router.pushUrl({ url: 'pages/Profile' });
+        });
     }
+    .justifyContent(FlexAlign.Center)
     .width(CommonConstant.FULL_WIDTH)
     .height(CommonConstant.FULL_HEIGHT)
-    .borderWidth(1)
-    .borderColor('#00eeff')
-    .hideTitleBar(true)
-    .hideToolBar(true)
-    .navBarPosition(NavBarPosition.Start)
-    .mode(NavigationMode.Auto)
   }
 }
