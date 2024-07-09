@@ -6,7 +6,7 @@
   "author": "",
   "license": "",
   "dependencies": {
-    "@abner/refresh": "^1.2.1"
+    "@abner/refresh": "1.2.2"
   },
   "devDependencies": {},
   "dynamicDependencies": {}
