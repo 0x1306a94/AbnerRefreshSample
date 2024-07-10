@@ -2,7 +2,6 @@ import { ListView, RefreshController, RefreshDataSource, RefreshLayout, RefreshP
 
 import { CommonEmptyView } from '../empty/CommonEmptyView';
 import { CommonConstant } from '../../common/CommonConstant';
-import { font } from '@kit.ArkUI';
 
 
 class HeaderData {
@@ -20,7 +19,7 @@ class HomeActivityListViewModel {
         setTimeout(() => {
             this.dataSource.deleteAll();
             let arr: number[] = []
-            for (let index = 0; index < 5; index++) {
+            for (let index = 0; index < 10; index++) {
                 arr.push(index);
             }
             this.dataSource.pushDataArray(arr);
@@ -32,7 +31,7 @@ class HomeActivityListViewModel {
         setTimeout(() => {
             const total = this.dataSource.totalCount();
             let arr: number[] = []
-            for (let index = 0; index < 5; index++) {
+            for (let index = 0; index < 10; index++) {
                 arr.push(index + total);
             }
             this.dataSource.pushDataArray(arr);
@@ -43,7 +42,10 @@ class HomeActivityListViewModel {
 
 @Component
 export struct HomeRootView {
-    @State listNestedScroll?: NestedScrollOptions = undefined
+    @State listNestedScroll?: NestedScrollOptions = {
+        scrollForward: NestedScrollMode.PARENT_FIRST,
+        scrollBackward: NestedScrollMode.SELF_FIRST
+    }
     @State listPosition: RefreshPositionEnum = RefreshPositionEnum.TOP
     @State refreshPosition: RefreshPositionEnum = RefreshPositionEnum.TOP
     @State bannerHeaderH: number = 120;
@@ -75,7 +77,7 @@ export struct HomeRootView {
                 isRefreshSticky: true, //是否吸顶
                 refreshStickyPosition: this.listPosition, //吸顶位置
                 childScroller: this.scroller,
-                onNestedScroll: (nestedScroll: NestedScrollOptions) => {
+                onStickyNestedScroll: (nestedScroll: NestedScrollOptions) => {
                     this.listNestedScroll = nestedScroll
                 },
                 onRefresh: () => {
