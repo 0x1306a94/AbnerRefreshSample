@@ -3,6 +3,9 @@
     "pages/Index",
     "pages/SafeArea",
     "pages/Multitab",
-    "pages/Profile"
+    "pages/Profile",
+    "pages/NavigationPage",
+    "pages/LoginPage",
+    "pages/MainPage"
   ]
 }

@@ -11,10 +11,12 @@ export default class EntryAbility extends UIAbility {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onDestroy');
   }
 
-  onWindowStageCreate(windowStage: window.WindowStage): void {
+  async onWindowStageCreate(windowStage: window.WindowStage): Promise<void> {
     // Main window is created, set main page for this ability
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
 
+    // const mainWindow = await windowStage.getMainWindow();
+    // await mainWindow.setWindowLayoutFullScreen(true);
     windowStage.loadContent('pages/Index', (err) => {
       font.registerFont({familyName: 'FiraCode-Medium', familySrc: $rawfile("font/FiraCode-Medium.ttf")})
 

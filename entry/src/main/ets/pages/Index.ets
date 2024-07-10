@@ -22,6 +22,11 @@ struct Index {
         .onClick((e) => {
           router.pushUrl({ url: 'pages/Profile' });
         });
+
+      Button('Navigation')
+        .onClick((e) => {
+          router.pushUrl({ url: 'pages/NavigationPage' });
+        });
     }
     .justifyContent(FlexAlign.Center)
     .width(CommonConstant.FULL_WIDTH)
